@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   formData: any = {};
+  errors: any = [];
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
         }]);
     }, (errorResponse) => {
         console.log(errorResponse);
+        this.errors = errorResponse.error.errors;
     }
     );
   }
