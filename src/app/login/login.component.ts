@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit {
         this.notifyMessage = 'You have been successfully registered, you can log in now';
       }
     });
-    this.auth.isAuthenticated().subscribe((res) => {
-      console.log(res);
-    });
   }
 
   createForm() {
@@ -54,4 +51,5 @@ export class LoginComponent implements OnInit {
       this.errors = errorResponse.error.errors;
     });
   }
+
 }

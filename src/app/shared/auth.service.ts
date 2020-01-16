@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class AuthService {
   private user;
-  private authUser;
+  public isAuthed;
 
   constructor(private http: HttpClient) { }
 
@@ -31,18 +31,27 @@ export class AuthService {
     );
   }
 
+  public logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
+  }
+
   private saveTokenAndCurrentUser(token: string): string {
      localStorage.setItem('token', token);
      localStorage.setItem('currentUser', JSON.stringify(this.user));
+     this.isAuthenticated().subscribe((res) => {
+      console.log(res);
+    });
      return token;
   }
 
   public isAuthenticated(): any {
     return this.http.get(`${environment.apiUrl}/user/me`, {
-      headers: new HttpHeaders({auth: localStorage.getItem('token')})
+      headers: new HttpHeaders({auth: localStorage.getItem('token') || ''})
     }).pipe(
       map((user: any) => {
-        return user._id === JSON.parse(localStorage.getItem('currentUser'))._id;
+          this.isAuthed = user._id === JSON.parse(localStorage.getItem('currentUser'))._id;
+          return this.isAuthed;
       })
     );
   }
