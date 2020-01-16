@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +10,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+  errors: any = [];
+  notifyMessage = '';
+
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router,
+              private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.createForm();
+    this.route.params.subscribe((params) => {
+      if (params.registered === 'success') {
+        this.notifyMessage = 'You have been successfully registered, you can log in now';
+      }
+    });
   }
 
   createForm() {
@@ -34,8 +46,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.loginForm.value).subscribe((token) => {
       this.router.navigate(['/']);
-    }, (errorR) => {
-      console.log(errorR);
+    }, (errorResponse) => {
+      this.errors = errorResponse.error.errors;
     });
   }
 }
