@@ -21,4 +21,16 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+
+  isInvalidForm(fieldName): boolean {
+    return this.loginForm.controls[fieldName].invalid
+      && (this.loginForm.controls[fieldName].dirty || this.loginForm.controls[fieldName].touched);
+  }
+  isRequired(fieldName): boolean {
+    return this.loginForm.controls[fieldName].errors.required;
+  }
+
+  login() {
+    console.log(this.loginForm.value);
+  }
 }
