@@ -17,6 +17,8 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './shared/auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { SignupComponent } from './signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'items', component: ItemsComponent},
@@ -51,7 +54,10 @@ import { SignupComponent } from './signup/signup.component';
     ]),
     NgbModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
