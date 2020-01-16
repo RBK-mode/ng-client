@@ -47,7 +47,7 @@ import { SignupComponent } from './signup/signup.component';
       {path: 'admin/items', component: AdminItemsComponent},
       {path: 'admin/orders', component: AdminOrdersComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'signup', component: SignupComponent}
+      {path: 'register', component: SignupComponent}
     ]),
     NgbModule
   ],
