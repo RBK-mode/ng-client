@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {Observable} from 'rxjs';
 
 import {environment} from '../../environments/environment';
@@ -12,6 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class AuthService {
   private user;
+  private authUser;
 
   constructor(private http: HttpClient) { }
 
@@ -33,5 +35,15 @@ export class AuthService {
      localStorage.setItem('token', token);
      localStorage.setItem('currentUser', JSON.stringify(this.user));
      return token;
+  }
+
+  public isAuthenticated(): any {
+    return this.http.get(`${environment.apiUrl}/user/me`, {
+      headers: new HttpHeaders({auth: localStorage.getItem('token')})
+    }).pipe(
+      map((user: any) => {
+        return user._id === JSON.parse(localStorage.getItem('currentUser'))._id;
+      })
+    );
   }
 }
