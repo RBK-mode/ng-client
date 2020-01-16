@@ -16,6 +16,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdminItemsComponent,
     AdminOrdersComponent,
     OrderSuccessComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
