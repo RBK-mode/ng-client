@@ -1,1 +1,8 @@
 <p>home works!</p>
+
+<div class="container">
+  <button (click)="test()">test</button>
+  <div *ngFor="let item of allFoods">
+    <app-food-card [foodsDetails]="item"></app-food-card>
+  </div>
+</div>
