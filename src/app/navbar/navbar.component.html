@@ -35,6 +35,9 @@
         </li>
       </ng-container>
       <li *ngIf="auth.isAuthed" class="nav-item mr-sm-2">
+        <a class="nav-link">{{auth.getCurrentUserName()}}</a>
+      </li>
+      <li *ngIf="auth.isAuthed" class="nav-item mr-sm-2">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>

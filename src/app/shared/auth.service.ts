@@ -34,6 +34,7 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
+    this.isAuthed = false;
   }
 
   private saveTokenAndCurrentUser(token: string): string {
@@ -54,5 +55,9 @@ export class AuthService {
           return this.isAuthed;
       })
     );
+  }
+
+  public getCurrentUserName(): string {
+    return this.user.name;
   }
 }
