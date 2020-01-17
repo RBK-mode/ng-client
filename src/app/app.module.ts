@@ -20,6 +20,8 @@ import { SignupComponent } from "./signup/signup.component";
 import { FoodCardComponent } from "./food-card/food-card.component";
 import { FoodsDataService } from "./foods-data.service";
 import { HttpClientModule } from "@angular/common/http";
+import { FooterComponent } from "./footer/footer.component";
+import { NgbdCarouselBasic } from "./carousel-basic/carousel-basic.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { HttpClientModule } from "@angular/common/http";
     OrderSuccessComponent,
     LoginComponent,
     SignupComponent,
-    FoodCardComponent
+    FoodCardComponent,
+    FooterComponent,
+    NgbdCarouselBasic
   ],
   imports: [
     BrowserModule,
