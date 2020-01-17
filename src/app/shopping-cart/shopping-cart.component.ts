@@ -1,18 +1,20 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { FoodsDataService } from "../foods-data.service";
-import * as _ from "underscore";
+import { Component, OnInit, Input } from '@angular/core';
+import { FoodsDataService } from '../foods-data.service';
+import * as _ from 'underscore';
 
 @Component({
-  selector: "app-shopping-cart",
-  templateUrl: "./shopping-cart.component.html",
-  styleUrls: ["./shopping-cart.component.css"]
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
   @Input()
   items: any = [];
+  // tslint:disable-next-line:ban-types
   totalOrder: Number = 0;
+  // tslint:disable-next-line:ban-types
   totalPrice: Number = 0;
-  quantityByFood: Object;
+  quantityByFood: object;
   constructor(private fd: FoodsDataService) {}
 
   ngOnInit() {

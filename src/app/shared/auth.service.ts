@@ -53,6 +53,10 @@ export class AuthService {
      return token;
   }
 
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
+
   public isAuthenticated(): any {
     return this.http.get(`${environment.apiUrl}/user/me`, {
       headers: new HttpHeaders({auth: localStorage.getItem('token') || ''})
