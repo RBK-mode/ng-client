@@ -54,7 +54,7 @@
     </ul>
 
     <ul class="navbar-nav mr-auto">
-      <ng-container *ngIf="!auth.isAuthed">
+      <ng-container *ngIf="!isAuthed">
         <li  class="nav-item mr-sm-2">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
@@ -62,10 +62,10 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
       </ng-container>
-      <li *ngIf="auth.isAuthed" class="nav-item mr-sm-2">
+      <li *ngIf="isAuthed" class="nav-item mr-sm-2">
         <a class="nav-link">{{auth.getCurrentUserName()}}</a>
       </li>
-      <li *ngIf="auth.isAuthed" class="nav-item mr-sm-2">
+      <li *ngIf="isAuthed" class="nav-item mr-sm-2">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
