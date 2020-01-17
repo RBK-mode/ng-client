@@ -23,7 +23,7 @@ export class ShoppingCartComponent implements OnInit {
     console.log("from shop carte", this.fd.selectedFood);
   }
   onPurshase() {
-    console.log("test purshase");
+    console.log('test purshase');
   }
   incButton(el, id) {
     this.quantityByFood[id] += 1;
