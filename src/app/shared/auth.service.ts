@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
@@ -14,17 +14,22 @@ import {map} from 'rxjs/operators';
 export class AuthService {
   private user;
   public isAuthed;
+  @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+    console.log(this.isAuthed);
+    this.getIsAuthed.emit(this.isAuthed);
+  }
 
   public register(userData: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/user/`, userData);
   }
 
   public login(userData: any): Observable<any> {
-    console.log(userData);
     return this.http.post(`${environment.apiUrl}/user/login`, userData).pipe(
       map((res: any) => {
+        console.log(res);
         this.user = res.user;
         return this.saveTokenAndCurrentUser(res.token);
       })
@@ -35,6 +40,8 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
     this.isAuthed = false;
+    this.getIsAuthed.emit(this.isAuthed);
+
   }
 
   private saveTokenAndCurrentUser(token: string): string {
@@ -52,12 +59,13 @@ export class AuthService {
     }).pipe(
       map((user: any) => {
           this.isAuthed = user._id === JSON.parse(localStorage.getItem('currentUser'))._id;
+          this.getIsAuthed.emit(this.isAuthed);
           return this.isAuthed;
       })
     );
   }
 
   public getCurrentUserName(): string {
-    return this.user.name;
+    return JSON.parse(localStorage.getItem('currentUser')).name;
   }
 }

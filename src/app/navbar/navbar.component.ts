@@ -8,9 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor(private auth: AuthService, private router: Router) { }
+  isAuthed: boolean = !!JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private auth: AuthService, private router: Router) {
+    auth.getIsAuthed.subscribe(authState => {
+      this.isAuthed = authState;
+    });
+  }
 
   ngOnInit() {
+    console.log(this.isAuthed);
   }
 
   logout() {
