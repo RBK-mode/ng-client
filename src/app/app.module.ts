@@ -26,7 +26,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './shared/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './shared/auth.guard';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,12 @@ import { AuthGuard } from './shared/auth.guard';
     HttpClientModule,
     AuthService,
     AuthGuard,
-    FoodsDataService
+    FoodsDataService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
 
   bootstrap: [AppComponent]
