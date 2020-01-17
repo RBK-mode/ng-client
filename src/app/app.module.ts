@@ -19,6 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './shared/auth.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AuthGuard } from './shared/auth.guard';
 
 @NgModule({
   declarations: [
@@ -42,22 +43,23 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'items', component: ItemsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'check-out', component: CheckOutComponent},
-      {path: 'order-success', component: OrderSuccessComponent},
-      {path: 'my/orders', component: MyOrdersComponent},
+      {path: 'items', component: ItemsComponent, canActivate: [AuthGuard]},
+      {path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard]},
+      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
+      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
+      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
       {path: 'admin/items', component: AdminItemsComponent},
       {path: 'admin/orders', component: AdminOrdersComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: SignupComponent}
+      {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+      {path: 'register', component: SignupComponent, canActivate: [AuthGuard]}
     ]),
     NgbModule,
     ReactiveFormsModule
   ],
   providers: [
     HttpClientModule,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
