@@ -20,7 +20,7 @@ export class ShoppingCartComponent implements OnInit {
     this.items = _.uniq(this.fd.selectedFood, "_id");
     this.totalOrder = this.fd.selectedFood.length;
     this.quantityByFood = this.fd.quantityByFood;
-    //console.log("from shop carte", this.items);
+    console.log("from shop carte", this.fd.selectedFood);
   }
   onPurshase() {
     console.log("test purshase");
