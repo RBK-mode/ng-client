@@ -8,7 +8,6 @@ import * as _ from "underscore";
   styleUrls: ["./shopping-cart.component.css"]
 })
 export class ShoppingCartComponent implements OnInit {
-  @Input()
   items: any = [];
   totalOrder: Number = 0;
   totalPrice: Number = 0;
@@ -16,12 +15,24 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private fd: FoodsDataService) {}
 
   ngOnInit() {
-    this.totalOrder = this.fd.totalOrder;
+    this.items = [];
     this.totalPrice = this.fd.totalPrice;
-    this.items = _.uniq(this.fd.selectedFood);
+    this.items = _.uniq(this.fd.selectedFood, "_id");
+    this.totalOrder = this.fd.selectedFood.length;
     this.quantityByFood = this.fd.quantityByFood;
+    //console.log("from shop carte", this.items);
   }
   onPurshase() {
     console.log("test purshase");
+  }
+  incButton(el, id) {
+    this.quantityByFood[id] += 1;
+    this.fd.selectedFood.push(el);
+    this.ngOnInit();
+  }
+  decButtton(el, id) {
+    this.quantityByFood[id] -= 1;
+    this.fd.selectedFood.pop();
+    this.ngOnInit();
   }
 }

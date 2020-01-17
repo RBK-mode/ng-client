@@ -11,14 +11,13 @@ export class FoodCardComponent implements OnInit {
   @Input() foodsDetails;
   selectedFoods = [];
   ngOnInit() {
-    this.foodsDetails["q"] = 1;
-    console.log("cart", this.foodsData.selectedFood);
-    console.log(" qte", this.foodsData.quntityByFood);
+    console.log("from food-card", this.foodsData.selectedFood);
+    /*     console.log(" qte", this.foodsData.quantityByFood);
     console.log(" qte order", this.foodsData.totalOrder);
-    console.log(" total price", this.foodsData.totalPrice);
+    console.log(" total price", this.foodsData.totalPrice); */
   }
   onClick(id) {
     this.foodsData.addTocard(this.foodsDetails, id);
-    console.log("test click ", id);
+    //console.log("test click ", id);
   }
 }
