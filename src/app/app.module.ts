@@ -1,6 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+
+
+import { OrderSuccessComponent } from "./order-success/order-success.component";
+import { FoodCardComponent } from "./food-card/food-card.component";
+import { FoodsDataService } from "./foods-data.service";
+import { FooterComponent } from "./footer/footer.component";
+import { NgbdCarouselBasic } from "./carousel-basic/carousel-basic.component";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './shared/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,24 +41,28 @@ import {HttpClientModule} from '@angular/common/http';
     AdminOrdersComponent,
     OrderSuccessComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FoodCardComponent,
+    FooterComponent,
+    NgbdCarouselBasic
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'items', component: ItemsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'check-out', component: CheckOutComponent},
-      {path: 'order-success', component: OrderSuccessComponent},
-      {path: 'my/orders', component: MyOrdersComponent},
-      {path: 'admin/items', component: AdminItemsComponent},
-      {path: 'admin/orders', component: AdminOrdersComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: SignupComponent}
+      { path: "", component: HomeComponent },
+      { path: "items", component: ItemsComponent },
+      { path: "shopping-cart", component: ShoppingCartComponent },
+      { path: "check-out", component: CheckOutComponent },
+      { path: "order-success", component: OrderSuccessComponent },
+      { path: "my/orders", component: MyOrdersComponent },
+      { path: "admin/items", component: AdminItemsComponent },
+      { path: "admin/orders", component: AdminOrdersComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: SignupComponent }
     ]),
     NgbModule,
     ReactiveFormsModule
@@ -59,6 +71,9 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     AuthService
   ],
+
+  providers: [FoodsDataService],
+
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
