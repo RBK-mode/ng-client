@@ -22,6 +22,6 @@ export class ShoppingCartComponent implements OnInit {
     this.quantityByFood = this.fd.quantityByFood;
   }
   onPurshase() {
-    console.log("test purshase");
+    console.log('test purshase');
   }
 }
