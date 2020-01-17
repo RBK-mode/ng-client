@@ -1,0 +1,18 @@
+<div class="card" style="width: 80%; margin: 20px auto;">
+  <img src="{{ foodsDetails.img }}" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h4 class="card-title">{{ foodsDetails.name }}</h4>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
+    <div
+      style="display: flex; justify-content: space-between; align-items: flex-end"
+    >
+      <h5 style="float:left">{{ foodsDetails.price }}</h5>
+      <a (click)="onClick(foodsDetails._id)" class="btn btn-primary"
+        ><i class="fa fa-shopping-cart"></i>Add to card
+      </a>
+    </div>
+  </div>
+</div>

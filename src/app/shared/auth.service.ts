@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class AuthService {
   private user;
-  public isAuthed = !!JSON.parse(localStorage.getItem('currentUser'));;
+  public isAuthed = !!JSON.parse(localStorage.getItem('currentUser'));
   @Output() getIsAuthed: EventEmitter<any> = new EventEmitter();
 
 

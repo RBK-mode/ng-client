@@ -2,6 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { FoodCardComponent } from './food-card/food-card.component';
+import { FoodsDataService } from './foods-data.service';
+import { FooterComponent } from './footer/footer.component';
+import { NgbdCarouselBasic } from './carousel-basic/carousel-basic.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,13 +20,13 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './shared/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './shared/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -34,10 +41,14 @@ import { AuthGuard } from './shared/auth.guard';
     AdminOrdersComponent,
     OrderSuccessComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FoodCardComponent,
+    FooterComponent,
+    NgbdCarouselBasic
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -52,6 +63,7 @@ import { AuthGuard } from './shared/auth.guard';
       {path: 'admin/orders', component: AdminOrdersComponent},
       {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
       {path: 'register', component: SignupComponent, canActivate: [AuthGuard]}
+
     ]),
     NgbModule,
     ReactiveFormsModule
@@ -59,8 +71,10 @@ import { AuthGuard } from './shared/auth.guard';
   providers: [
     HttpClientModule,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    FoodsDataService
   ],
+
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
