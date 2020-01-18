@@ -1,4 +1,6 @@
 import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbdModalBasic} from '../basic-modal/basic-modal';
 
 export type SortDirection = 'asc' | 'desc' | '';
 const rotate: {[key: string]: SortDirection} = { asc: 'desc', desc: '', '': 'asc' };
@@ -20,7 +22,7 @@ export interface SortEvent {
   }
 })
 // tslint:disable-next-line:directive-class-suffix
-export class NgbdSortableHeader2 {
+export class NgbdSortableHeader {
 
   @Input() sortable: string;
   @Input() direction: SortDirection = '';
@@ -34,15 +36,21 @@ export class NgbdSortableHeader2 {
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'ngbd-table-sortable-items',
-  templateUrl: './table-sortable.items.component.html'
+  selector: 'ngbd-table-sortable',
+  templateUrl: './table-sortable.component.html'
 })
 // tslint:disable-next-line:component-class-suffix
-export class ItemsTable {
+export class OrdersTable {
 
  @Input() arrayData ;
 
-  @ViewChildren(NgbdSortableHeader2) headers: QueryList<NgbdSortableHeader2>;
+  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
+  constructor(private modalService: NgbModal) {}
+  open(items) {
+    const modalRef = this.modalService.open(NgbdModalBasic);
+    modalRef.componentInstance.my_modal_title = 'Items';
+    modalRef.componentInstance.items = items;
+  }
 
   onSort({column, direction}: SortEvent) {
     // resetting other headers

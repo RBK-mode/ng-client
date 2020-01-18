@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col" sortable="id" (sort)="onSort($event)">By</th>
+    <th scope="col" sortable="date" (sort)="onSort($event)">Date</th>
+    <th scope="col">Items</th>
+    <th scope="col" sortable="state" (sort)="onSort($event)">State</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of arrayData">
+    <th scope="row">{{ order._id.substr(0,2) }}</th>
+    <td>
+      {{ order.customerId.name }}
+    </td>
+    <td>{{ order.createdAt | date }}</td>
+    <td><button class="btn btn-lg btn-outline-primary" (click)="open(order.items_list)">Items</button>
+    </td>
+    <td>{{ order.state }}</td>
+
+  </tr>
+  </tbody>
+</table>
+
+<!--<ngbd-modal-basic [items]="arrayData"></ngbd-modal-basic>-->

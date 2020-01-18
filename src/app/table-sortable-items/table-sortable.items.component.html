@@ -2,21 +2,19 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col" sortable="id" (sort)="onSort($event)">By</th>
-    <th scope="col" sortable="date" (sort)="onSort($event)">Date</th>
-    <th scope="col">Items</th>
-    <th scope="col" sortable="state" (sort)="onSort($event)">State</th>
+    <th scope="col" sortable="id" (sort)="onSort($event)">Name</th>
+    <th scope="col" sortable="date" (sort)="onSort($event)">Price</th>
+    <th scope="col" sortable="state" (sort)="onSort($event)">Quantity</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let order of arrayData">
-    <th scope="row">{{ order._id.substr(0,2) }}</th>
+  <tr *ngFor="let item of arrayData">
+    <th scope="row">{{ item._id.substr(item._id.length - 3,item._id.length) }}</th>
     <td>
-      {{ order.customerId.name }}
+      {{ item.name }}
     </td>
-    <td>{{ order.createdAt | date }}</td>
-    <td></td>
-    <td>{{ order.state }}</td>
+    <td>{{ item.price| number }}</td>
+    <td>{{ item.quantity }}</td>
 
   </tr>
   </tbody>
