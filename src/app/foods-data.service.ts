@@ -10,7 +10,7 @@ export class FoodsDataService {
   selectedFood: any = [];
   quantityByFood: Object = {};
   totalOrder: Number = 0;
-  totalPrice: Number = 0;
+  totalPrice: any = 0;
   apiUrl = "http://localhost:8000/api/item";
   apiUrlOrder = "http://localhost:8000/api/order";
   httpOptions = {
