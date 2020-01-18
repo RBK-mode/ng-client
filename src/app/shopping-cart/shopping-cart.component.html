@@ -17,7 +17,6 @@
           <small class="text-muted">Brief description {{ item.name }}</small>
         </div>
 
-        <!-- <input type="text" value="{{ quantityByFood[item._id] }}" /> -->
         <i
           (click)="incButton(item, item._id)"
           class="fa fa-plus-circle"
@@ -39,17 +38,11 @@
     </div>
     <!-- add pipes here  -->
     <li class="list-group-item d-flex justify-content-between">
-      <span>Total (TND)</span>
+      <span>Total Purshase </span>
       <strong>{{ totalPrice | currency: "TND" }}</strong>
     </li>
     <!--  -->
   </ul>
 
-  <button
-    (click)="onPurshase()"
-    class="btn btn-primary btn-lg btn-block"
-    type="submit"
-  >
-    Confirme
-  </button>
+  <app-shipping></app-shipping>
 </div>

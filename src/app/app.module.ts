@@ -25,6 +25,8 @@ import { SignupComponent } from "./signup/signup.component";
 import { AuthService } from "./shared/auth.service";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthGuard } from "./shared/auth.guard";
+import { ShippingComponent } from './shipping/shipping.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AuthGuard } from "./shared/auth.guard";
     SignupComponent,
     FoodCardComponent,
     FooterComponent,
-    NgbdCarouselBasic
+    NgbdCarouselBasic,
+    ShippingComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

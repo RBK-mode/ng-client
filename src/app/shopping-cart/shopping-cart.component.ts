@@ -23,14 +23,16 @@ export class ShoppingCartComponent implements OnInit {
     console.log("from shop carte", this.fd.selectedFood);
   }
   onPurshase() {
-    console.log('test purshase');
+    console.log("test purshase");
   }
   incButton(el, id) {
+    this.fd.totalPrice += el.price;
     this.quantityByFood[id] += 1;
     this.fd.selectedFood.push(el);
     this.ngOnInit();
   }
   decButtton(el, id) {
+    this.fd.totalPrice -= el.price;
     this.quantityByFood[id] -= 1;
     this.fd.selectedFood.pop();
     this.ngOnInit();
