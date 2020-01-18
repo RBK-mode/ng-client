@@ -28,6 +28,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './shared/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/token.interceptor';
+import {OrderService} from './order.service';
+import {UserService} from './user.service';
+import { NgbdSortableHeader, OrdersTable } from './table-sortable-orders/table-sortable.component';
+import { NgbdModalBasic } from './basic-modal/basic-modal';
+import { NgbdSortableHeader2, ItemsTable } from './table-sortable-items/table-sortable.items.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { TokenInterceptor } from './shared/token.interceptor';
     SignupComponent,
     FoodCardComponent,
     FooterComponent,
-    NgbdCarouselBasic
+    NgbdCarouselBasic,
+    NgbdSortableHeader,
+    OrdersTable,
+    NgbdModalBasic,
+    NgbdSortableHeader2,
+    ItemsTable
   ],
   imports: [
     BrowserModule,
@@ -55,19 +65,22 @@ import { TokenInterceptor } from './shared/token.interceptor';
     HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'items', component: ItemsComponent, canActivate: [AuthGuard]},
-      {path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard]},
+      {path: 'items', component: ItemsComponent},
+      {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
       {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
-      {path: 'admin/items', component: AdminItemsComponent},
-      {path: 'admin/orders', component: AdminOrdersComponent},
+      {path: 'admin/items', component: AdminItemsComponent, canActivate: [AuthGuard]},
+      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
       {path: 'register', component: SignupComponent, canActivate: [AuthGuard]}
 
     ]),
     NgbModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    NgbdModalBasic
   ],
   providers: [
     HttpClientModule,
@@ -78,8 +91,11 @@ import { TokenInterceptor } from './shared/token.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    OrderService,
+    UserService
   ],
+  exports: [OrdersTable],
 
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,29 @@
-<p>my-orders works!</p>
+<div class="container">
+  <h2>My Orders</h2>
+<!--  <table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Id</th>-->
+<!--      <th>By</th>-->
+<!--      <th>Items</th>-->
+
+<!--      <th>State</th>-->
+
+<!--      <th></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let order of orders ">-->
+<!--      <td>{{ order }}</td>-->
+<!--      <td>{{ order.customerId.name }}</td>-->
+<!--      <td>ll</td>-->
+<!--      <td>{{ order.state }}</td>-->
+
+<!--      <td></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+  <ngbd-table-sortable [arrayData]="orders"></ngbd-table-sortable>
+
+
+</div>
