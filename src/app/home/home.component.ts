@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { FoodsDataService } from "../foods-data.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { FoodsDataService } from '../foods-data.service';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   allFoods: any = [];

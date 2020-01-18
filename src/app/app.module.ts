@@ -8,6 +8,7 @@ import { FoodsDataService } from "./foods-data.service";
 import { FooterComponent } from "./footer/footer.component";
 import { NgbdCarouselBasic } from "./carousel-basic/carousel-basic.component";
 
+<<<<<<< HEAD
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -27,6 +28,33 @@ import { HttpClientModule } from "@angular/common/http";
 import { AuthGuard } from "./shared/auth.guard";
 import { ShippingComponent } from './shipping/shipping.component';
 import { CategoriesComponent } from './categories/categories.component';
+=======
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { FoodCardComponent } from './food-card/food-card.component';
+import { FoodsDataService } from './foods-data.service';
+import { FooterComponent } from './footer/footer.component';
+import { NgbdCarouselBasic } from './carousel-basic/carousel-basic.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ItemsComponent } from './items/items.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { LoginComponent } from './login/login.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './shared/auth.service';
+import {HttpClientModule} from '@angular/common/http';
+import { AuthGuard } from './shared/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/token.interceptor';
+>>>>>>> 59923d3b58242a8a1962fc1ef14b770bb9020b3f
 
 @NgModule({
   declarations: [
@@ -85,7 +113,21 @@ import { CategoriesComponent } from './categories/categories.component';
     NgbModule,
     ReactiveFormsModule
   ],
+<<<<<<< HEAD
   providers: [HttpClientModule, AuthService, AuthGuard, FoodsDataService],
+=======
+  providers: [
+    HttpClientModule,
+    AuthService,
+    AuthGuard,
+    FoodsDataService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
+>>>>>>> 59923d3b58242a8a1962fc1ef14b770bb9020b3f
 
   bootstrap: [AppComponent]
 })
