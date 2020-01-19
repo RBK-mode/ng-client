@@ -11,6 +11,7 @@ import { FoodsDataService } from "../foods-data.service";
 export class NavbarComponent implements OnInit {
   isAuthed: boolean = !!JSON.parse(localStorage.getItem("currentUser"));
   counter: Number = 0;
+  nbOrders: any = this.fd.totalOrder;
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -23,6 +24,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.isAuthed);
+    this.fd.B.subscribe(data => {
+      this.nbOrders = data;
+    });
+    console.log("hello ", this.nbOrders);
   }
 
   logout() {

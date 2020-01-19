@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import * as _ from "underscore";
 import { LocationService } from "./location.service";
-import { BehaviorSubject } from "rxjs";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -12,6 +12,9 @@ export class FoodsDataService {
   quantityByFood: Object = {};
   totalOrder: Number = 0;
   totalPrice: any = 0;
+  //Subject
+  A = new Subject<any>();
+  B = this.A.asObservable();
   apiUrl = "http://localhost:8000/api/item";
   apiUrlOrder = "http://localhost:8000/api/order";
   httpOptions = {
@@ -23,14 +26,15 @@ export class FoodsDataService {
   constructor(private http: HttpClient, private loc: LocationService) {}
   //retrevie data
   getFoods(element) {
+    let obj: Object = {};
     console.log(element);
     if (!element) {
       return this.http.get(this.apiUrl);
     } else {
-      console.log("2");
+      obj["categoryId"] = element;
       return this.http.post(
-        `${this.apiUrl}`,
-        JSON.stringify(element),
+        `${this.apiUrl}/cat`,
+        JSON.stringify(obj),
         this.httpOptions
       );
     }

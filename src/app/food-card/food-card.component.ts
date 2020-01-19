@@ -18,6 +18,7 @@ export class FoodCardComponent implements OnInit {
   }
   onClick(id) {
     this.foodsData.addTocard(this.foodsDetails, id);
+    this.foodsData.A.next(this.foodsData.selectedFood.length);
     //console.log("test click ", id);
   }
 }

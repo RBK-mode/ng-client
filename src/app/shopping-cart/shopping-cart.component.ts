@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
     this.fd.totalPrice += el.price;
     this.quantityByFood[id] += 1;
     this.fd.selectedFood.push(el);
+    this.fd.A.next(this.fd.selectedFood.length);
     this.ngOnInit();
   }
   decButtton(el, id) {
@@ -38,6 +39,7 @@ export class ShoppingCartComponent implements OnInit {
     this.quantityByFood[id] -= 1;
     let delElementIndex = this.fd.selectedFood.lastIndexOf(el);
     this.fd.selectedFood.splice(delElementIndex, 1);
+    this.fd.A.next(this.fd.selectedFood.length);
     this.ngOnInit();
   }
 }

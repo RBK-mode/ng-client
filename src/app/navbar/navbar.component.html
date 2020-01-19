@@ -28,6 +28,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
       </li>
+      <li class="nav-item">
+        <span class="badge badge-secondary badge-pill">{{ nbOrders }} </span>
+      </li>
       <li *ngIf="isAuthed" ngbDropdown class="nav-item dropdown">
         <a
           ngbDropdownToggle
@@ -38,7 +41,7 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {{auth.getCurrentUserName()}}
+          {{ auth.getCurrentUserName() }}
         </a>
         <div
           ngbDropdownMenu
@@ -55,16 +58,16 @@
 
     <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="!isAuthed">
-        <li  class="nav-item mr-sm-2">
+        <li class="nav-item mr-sm-2">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
         <li class="nav-item mr-sm-2">
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
       </ng-container>
-<!--      <li *ngIf="isAuthed" class="nav-item mr-sm-2">-->
-<!--        <a class="nav-link">{{auth.getCurrentUserName()}}</a>-->
-<!--      </li>-->
+      <!--      <li *ngIf="isAuthed" class="nav-item mr-sm-2">-->
+      <!--        <a class="nav-link">{{auth.getCurrentUserName()}}</a>-->
+      <!--      </li>-->
       <li *ngIf="isAuthed" class="nav-item mr-sm-2">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>

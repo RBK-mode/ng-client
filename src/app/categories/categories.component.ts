@@ -18,7 +18,9 @@ export class CategoriesComponent implements OnInit {
       this.categories = data;
     });
   }
-  reRenderHome(el) {
+  reRenderHome(el, event) {
+    console.log(event);
+    event.preventDefault();
     console.log("test");
     this.cat.A.next(el);
   }

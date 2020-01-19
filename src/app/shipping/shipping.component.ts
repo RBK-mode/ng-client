@@ -49,6 +49,7 @@ export class ShippingComponent implements OnInit {
     this.shippementDetails["adress"] = inputAdress.value;
     this.shippementDetails["phone"] = inputPhone.value;
     this.fd.postOrder(this.shippementDetails);
+    this.fd.A.next(0);
     this.router.navigate(["/"]);
   }
 }

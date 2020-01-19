@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     private foodService: FoodsDataService,
     private cat: CategoryService
   ) {}
-
+  //to render all product on home page
   ngOnInit() {
     this.foodService.getFoods(this.cat.searchElement).subscribe(data => {
       console.log(data);
@@ -27,14 +27,6 @@ export class HomeComponent implements OnInit {
         console.log(data);
         this.allFoods = data;
       });
-    });
-  }
-
-  test() {
-    console.log("hello");
-    this.foodService.getFoods(this.cat.searchElement).subscribe(data => {
-      console.log("foods depend on categorie", data);
-      this.allFoods = data;
     });
   }
 }
