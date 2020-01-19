@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FoodsDataService } from '../foods-data.service';
-import * as _ from 'underscore';
+import { Component, OnInit, Input } from "@angular/core";
+import { FoodsDataService } from "../foods-data.service";
+import * as _ from "underscore";
 
 @Component({
-  selector: 'app-shopping-cart',
-  templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.css']
+  selector: "app-shopping-cart",
+  templateUrl: "./shopping-cart.component.html",
+  styleUrls: ["./shopping-cart.component.css"]
 })
 export class ShoppingCartComponent implements OnInit {
   items: any = [];
@@ -36,7 +36,8 @@ export class ShoppingCartComponent implements OnInit {
   decButtton(el, id) {
     this.fd.totalPrice -= el.price;
     this.quantityByFood[id] -= 1;
-    this.fd.selectedFood.pop();
+    let delElementIndex = this.fd.selectedFood.lastIndexOf(el);
+    this.fd.selectedFood.splice(delElementIndex, 1);
     this.ngOnInit();
   }
 }

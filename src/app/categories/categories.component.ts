@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CategoryService } from "../category.service";
+import { FoodsDataService } from "../foods-data.service";
+import { Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-categories",
@@ -8,16 +10,16 @@ import { CategoryService } from "../category.service";
 })
 export class CategoriesComponent implements OnInit {
   categories: any = [];
-  constructor(private cat: CategoryService) {}
+  @Output() private demo = new EventEmitter();
+  constructor(private cat: CategoryService, private fd: FoodsDataService) {}
 
   ngOnInit() {
-    console.log("ttttttttt");
-
     this.cat.getCategory().subscribe(data => {
       this.categories = data;
-      console.log(data);
     });
-
-    console.log(this.categories);
+  }
+  reRenderHome(el) {
+    console.log("test");
+    this.cat.A.next(el);
   }
 }

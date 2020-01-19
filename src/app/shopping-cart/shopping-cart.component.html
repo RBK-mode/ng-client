@@ -1,4 +1,4 @@
-<div class="col-md-12 order-md-2 mb-4">
+<div class="col-md-12 order-md-2 mb-4" id="main">
   <h4 class="d-flex justify-content-between align-items-center mb-3">
     <span class="text-muted">Your cart</span>
     <!-- counter of total items in the shopping list  -->
@@ -18,16 +18,14 @@
         </div>
 
         <i
-          (click)="incButton(item, item._id)"
-          class="fa fa-plus-circle"
-          aria-hidden="true"
-        ></i>
-
-        <h6 class="my-0">{{ quantityByFood[item._id] }}</h6>
-
-        <i
           (click)="decButtton(item, item._id)"
           class="fa fa-minus-circle"
+          aria-hidden="true"
+        ></i>
+        <h6 class="my-0">{{ quantityByFood[item._id] }}</h6>
+        <i
+          (click)="incButton(item, item._id)"
+          class="fa fa-plus-circle"
           aria-hidden="true"
         ></i>
 
@@ -38,8 +36,8 @@
     </div>
     <!-- add pipes here  -->
     <li class="list-group-item d-flex justify-content-between">
-      <span>Total Purshase </span>
-      <strong>{{ totalPrice | currency: "TND" }}</strong>
+      <span>Total Purshase Tnd </span>
+      <strong>{{ totalPrice }}</strong>
     </li>
     <!--  -->
   </ul>

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import * as _ from "underscore";
 import { LocationService } from "./location.service";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -15,14 +16,26 @@ export class FoodsDataService {
   apiUrlOrder = "http://localhost:8000/api/order";
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
     })
   };
   constructor(private http: HttpClient, private loc: LocationService) {}
   //retrevie data
-  getFoods() {
-    return this.http.get(this.apiUrl);
+  getFoods(element) {
+    console.log(element);
+    if (!element) {
+      return this.http.get(this.apiUrl);
+    } else {
+      console.log("2");
+      return this.http.post(
+        `${this.apiUrl}`,
+        JSON.stringify(element),
+        this.httpOptions
+      );
+    }
   }
+
   addTocard(orderItem, id) {
     if (this.quantityByFood[id]) {
       this.quantityByFood[id] += 1;

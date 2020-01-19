@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { FoodsDataService } from "../foods-data.service";
+import { CategoryService } from "../category.service";
+import { EventEmitter } from "events";
 
 @Component({
   selector: "app-home",
@@ -8,14 +10,31 @@ import { FoodsDataService } from "../foods-data.service";
 })
 export class HomeComponent implements OnInit {
   allFoods: any = [];
-  constructor(private foodService: FoodsDataService) {}
+  //@Output() render = new EventEmitter();
+  constructor(
+    private foodService: FoodsDataService,
+    private cat: CategoryService
+  ) {}
+
   ngOnInit() {
-    this.foodService.getFoods().subscribe(data => {
+    this.foodService.getFoods(this.cat.searchElement).subscribe(data => {
       console.log(data);
       this.allFoods = data;
     });
+    this.cat.B.subscribe(data => {
+      console.log(data);
+      this.foodService.getFoods(data._id).subscribe(data => {
+        console.log(data);
+        this.allFoods = data;
+      });
+    });
   }
+
   test() {
-    console.log(this.allFoods);
+    console.log("hello");
+    this.foodService.getFoods(this.cat.searchElement).subscribe(data => {
+      console.log("foods depend on categorie", data);
+      this.allFoods = data;
+    });
   }
 }
