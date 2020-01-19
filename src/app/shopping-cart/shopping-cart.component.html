@@ -12,26 +12,35 @@
         class="list-group-item d-flex justify-content-between lh-condensed"
         #element
       >
-        <div>
+        <div class="fourty">
           <h6 class="my-0">Product name {{ item.name }}</h6>
           <small class="text-muted">Brief description {{ item.name }}</small>
         </div>
 
-        <i
-          (click)="decButtton(item, item._id)"
-          class="fa fa-minus-circle"
-          aria-hidden="true"
-        ></i>
-        <h6 class="my-0">{{ quantityByFood[item._id] }}</h6>
-        <i
-          (click)="incButton(item, item._id)"
-          class="fa fa-plus-circle"
-          aria-hidden="true"
-        ></i>
-
-        <span class="text-muted">{{
-          item.price * quantityByFood[item._id]
-        }}</span>
+        <div class="twenty">
+          <i
+            (click)="decButtton(item, item._id)"
+            class="fa fa-minus-circle"
+            style="font-size: 1.8rem;"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="ten">
+          <h6 class="my-0">{{ quantityByFood[item._id] }}</h6>
+        </div>
+        <div class="twenty">
+          <i
+            (click)="incButton(item, item._id)"
+            class="fa fa-plus-circle"
+            style="font-size: 1.8rem;"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="ten">
+          <span class="text-muted">{{
+            item.price * quantityByFood[item._id]
+          }}</span>
+        </div>
       </li>
     </div>
     <!-- add pipes here  -->

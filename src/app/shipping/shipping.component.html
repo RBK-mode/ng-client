@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">delivery information</h4>
+    <h4 class="modal-title" id="modal-basic-title">Delivery informations</h4>
     <button
       type="button"
       class="close"
@@ -11,7 +11,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form style="padding-top: 10px; ">
       <div class="form-group">
         <label for="adress">Adress</label>
         <div class="input-group">
@@ -34,6 +34,11 @@
           />
         </div>
         <label for="payment">Payment method</label>
+
+        <select class="form-control">
+          <option>Cash in delivery</option>
+          <option>Master carte </option>
+        </select>
       </div>
     </form>
   </div>
@@ -43,7 +48,7 @@
       class="btn btn-outline-dark"
       (click)="modal.close('Save click'); confirm(adress, phone); clearData()"
     >
-      confirm and close
+      Confirm and close
     </button>
   </div>
 </ng-template>
