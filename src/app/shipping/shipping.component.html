@@ -1,0 +1,62 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delivery informations</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form style="padding-top: 10px; ">
+      <div class="form-group">
+        <label for="adress">Adress</label>
+        <div class="input-group">
+          <input
+            #adress
+            class="form-control"
+            type="text"
+            placeholder="adress"
+            id="adress"
+          />
+        </div>
+        <label for="phone">Phone Number</label>
+        <div class="input-group">
+          <input
+            #phone
+            class="form-control"
+            type="text"
+            placeholder="phone number"
+            id="phone"
+          />
+        </div>
+        <label for="payment">Payment method</label>
+
+        <select class="form-control">
+          <option>Cash in delivery</option>
+          <option>Master carte </option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click'); confirm(adress, phone); clearData()"
+    >
+      Confirm and close
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary btn-lg btn-block" (click)="open(content)">
+  confirm
+</button>
+
+<hr />
+
+<!-- <pre>{{ closeResult }}</pre> -->

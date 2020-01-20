@@ -1,7 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
+
+import { ShippingComponent } from "./shipping/shipping.component";
+import { CategoriesComponent } from "./categories/categories.component";
 
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { FoodCardComponent } from './food-card/food-card.component';
@@ -34,6 +37,7 @@ import { NgbdSortableHeader, OrdersTable } from './table-sortable-orders/table-s
 import { NgbdModalBasic } from './basic-modal/basic-modal';
 import { NgbdSortableHeader2, ItemsTable } from './table-sortable-items/table-sortable.items.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,11 +55,16 @@ import { NgbdSortableHeader2, ItemsTable } from './table-sortable-items/table-so
     FoodCardComponent,
     FooterComponent,
     NgbdCarouselBasic,
+
+    ShippingComponent,
+    CategoriesComponent
+
     NgbdSortableHeader,
     OrdersTable,
     NgbdModalBasic,
     NgbdSortableHeader2,
     ItemsTable
+
   ],
   imports: [
     BrowserModule,
@@ -64,16 +73,35 @@ import { NgbdSortableHeader2, ItemsTable } from './table-sortable-items/table-so
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'items', component: ItemsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
-      {path: 'admin/items', component: AdminItemsComponent, canActivate: [AuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
-      {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-      {path: 'register', component: SignupComponent, canActivate: [AuthGuard]}
+
+      { path: "", component: HomeComponent },
+      { path: "items", component: ItemsComponent, canActivate: [AuthGuard] },
+      {
+        path: "shopping-cart",
+        component: ShoppingCartComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "check-out",
+        component: CheckOutComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "order-success",
+        component: OrderSuccessComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "my/orders",
+        component: MyOrdersComponent,
+        canActivate: [AuthGuard]
+      },
+      { path: "admin/items", component: AdminItemsComponent },
+      { path: "admin/orders", component: AdminOrdersComponent },
+      { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
+      { path: "register", component: SignupComponent, canActivate: [AuthGuard] }
+
+
 
     ]),
     NgbModule,

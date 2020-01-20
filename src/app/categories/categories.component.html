@@ -1,0 +1,8 @@
+<ul class="nav justify-content-center">
+  <li class="nav-item" *ngFor="let el of categories">
+    <a class="nav-link " href="/" (click)="reRenderHome(el, $event)">{{
+      el.name
+    }}</a>
+  </li>
+</ul>
+<div class="container-fluid"></div>
