@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col" sortable="id" (sort)="onSort($event)">Name</th>
+    <th scope="col" sortable="date" (sort)="onSort($event)">Price</th>
+    <th scope="col" sortable="state" (sort)="onSort($event)">Quantity</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of arrayData">
+    <th scope="row">{{ item._id.substr(item._id.length - 3,item._id.length) }}</th>
+    <td>
+      {{ item.name }}
+    </td>
+    <td>{{ item.price| number }}</td>
+    <td>{{ item.quantity }}</td>
+
+  </tr>
+  </tbody>
+</table>

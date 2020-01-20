@@ -44,9 +44,7 @@
           aria-labelledby="navbarDropdown"
         >
           <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
-          <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item">Logout</a>
         </div>
       </li>
     </ul>
@@ -66,9 +64,8 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
       </ng-container>
-      <!--      <li *ngIf="isAuthed" class="nav-item mr-sm-2">-->
-      <!--        <a class="nav-link">{{auth.getCurrentUserName()}}</a>-->
-      <!--      </li>-->
+
+
       <li *ngIf="isAuthed" class="nav-item mr-sm-2">
         <a class="nav-link" (click)="logout()" style="cursor: pointer;"
           >Logout</a
